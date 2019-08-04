@@ -1,25 +1,15 @@
 import React from "react";
 
-import Category from "./Category";
+import CategoryContainer from "../containers/CategoryContainer";
 
 const Sidebar = props => {
   // console.log("Sidebar: ", props);
-  const {
-    categories,
-    handleAddCategory,
-    handleDelCategory,
-    handleSelectCategory
-  } = props.categoryList;
+  const { categories, handleAddCategory } = props.categoryList;
   return (
     <div>
       <ul>
         {categories.map(category => (
-          <Category
-            key={category.id}
-            category={category}
-            callback={handleSelectCategory}
-            callbackDelCategory={handleDelCategory}
-          />
+          <CategoryContainer key={category.id} category={category} />
         ))}
       </ul>
       <button onClick={handleAddCategory}>목록 추가</button>

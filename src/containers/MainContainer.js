@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import uuid from "../utils/uuid";
 import * as actions from "../store/module/todoList";
 import Main from "../components/Main";
+import uuid from "../utils/uuid";
 
 const MainContainer = props => {
   // console.log("MainContainer: ", props);

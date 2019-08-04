@@ -10,7 +10,6 @@ const TodoContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  selectedCategoryId: state.todoList.selectedCategoryId,
   categories: state.todoList.categories
 });
 
