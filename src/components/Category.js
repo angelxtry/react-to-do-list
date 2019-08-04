@@ -53,7 +53,7 @@ class Category extends Component {
   };
 
   render() {
-    const { category, handleSelectCategory } = this.props.categoryContainer;
+    const { category, focus, handleSelectCategory } = this.props.categoryContainer;
 
     return (
       <li>
@@ -65,6 +65,7 @@ class Category extends Component {
             onClick={() => handleSelectCategory(category.id)}
             onKeyDown={this.onKeyDown}
             onBlur={e => this.saveCategory(e.target.value)}
+            autoFocus={focus}
           />
         </span>
         <button onClick={this.onDelCategory}>삭제</button>

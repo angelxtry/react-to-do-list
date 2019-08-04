@@ -8,9 +8,21 @@ const Sidebar = props => {
   return (
     <div>
       <ul>
-        {categories.map(category => (
-          <CategoryContainer key={category.id} category={category} />
-        ))}
+        {categories.map((category, index) =>
+          index === categories.length - 1 ? (
+            <CategoryContainer
+              key={category.id}
+              category={category}
+              focus={true}
+            />
+          ) : (
+            <CategoryContainer
+              key={category.id}
+              category={category}
+              focus={false}
+            />
+          )
+        )}
       </ul>
       <button onClick={handleAddCategory}>목록 추가</button>
     </div>
