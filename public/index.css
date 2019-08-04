@@ -24,7 +24,8 @@ body {
 }
 
 .sidenav .category:hover {
-  color: #f1f1f1;
+  /* color: #f1f1f1; */
+  color: #111;
 }
 
 .main {

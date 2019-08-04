@@ -1,5 +1,6 @@
 const ADD_CATEGORY = "todo/ADD_CATEGORY";
 const DEL_CATEGORY = "todo/DEL_CATEGORY";
+const CHANGE_CATEGORY_TEXT = "todo/CHANGE_CATEGORY_TEXT";
 const SELECT_CATEGORY = "todo/SELECT_CATEGORY";
 const ADD_TODO = "todo/ADD_TODO";
 const DEL_TODO = "todo/DEL_TODO";
@@ -15,6 +16,12 @@ export const addCategory = id => ({
 export const delCategory = id => ({
   type: DEL_CATEGORY,
   id
+});
+
+export const changeCategoryText = (id, text) => ({
+  type: CHANGE_CATEGORY_TEXT,
+  id,
+  text
 });
 
 export const selectCategory = id => ({
@@ -127,6 +134,16 @@ const todoList = (state = initialState, action) => {
           category => category.id !== action.id
         )
       };
+    case CHANGE_CATEGORY_TEXT:
+      return {
+        ...state,
+        categories: state.categories.map(category => {
+          if (category.id === action.id) {
+            category.name = action.text;
+          }
+          return category;
+        })
+      }
     case SELECT_CATEGORY: {
       // console.log('Reducer-SELECT_CATEGORY: ', state);
       // console.log('Reducer-SELECT_CATEGORY: ', action);
