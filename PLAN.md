@@ -26,7 +26,8 @@ main 할일 추가 버튼
 v 버튼을 클릭하면 할일 목록의 마지막에 input이 생성
 v text가 비어있는 todo가 하나 생성되면서 input이 추가되는 것 처럼 보여진다.
 v 비어 있는 input이 있다면 input이 추가로 생성되지 않는다.
-input에 값이 입력되고 enter가 입력되거나 focus out되면 todo 저장 로직 추가
+input에 값이 입력되고 enter가 입력되면 저장
+focus out되면 todo 저장 로직 추가
 
 ## components
 

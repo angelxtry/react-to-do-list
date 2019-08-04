@@ -6,12 +6,11 @@ import Sidebar from "../components/Sidebar";
 import uuid from "../utils/uuid";
 
 const SidebarContainer = props => {
-  console.log("SidebarContainer: ", props);
+  // console.log("SidebarContainer: ", props);
   return <Sidebar categoryList={props} />;
 };
 
 const mapStateToProps = state => ({
-  // selectedCategoryId: state.todoList.selectedCategoryId,
   categories: state.todoList.categories
 });
 

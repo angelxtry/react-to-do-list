@@ -1,15 +1,16 @@
 import React from "react";
 
-import Todo from "./Todo";
+import TodoContainer from "../containers/TodoContainer";
+// import Todo from "./Todo";
 
 const Main = props => {
-  // console.log("Main: ", props);
+  console.log("Main: ", props);
   const {
     selectedCategoryId,
     categories,
-    handleToggleCheckbox,
     handleAddTodo,
-    handleChangeTodoText
+    // handleToggleCheckbox,
+    // handleChangeTodoText
   } = props.todos;
   // console.log("Main selectedCategoryId: ", selectedCategoryId);
   // console.log("Main categories: ", categories);
@@ -33,14 +34,15 @@ const Main = props => {
       <span style={style}>{selectedCategory.name}</span>
       <button onClick={() => addTodo(selectedCategoryId)}>+</button>
       <ul>
-      {selectedCategory.todos.map(todo => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-          callbackToggleCheckbox={handleToggleCheckbox}
-          callbackChangeTodoText={handleChangeTodoText}
-        />
-      ))}
+        {selectedCategory.todos.map(todo => (
+          // <Todo
+          //   key={todo.id}
+          //   todo={todo}
+          //   callbackToggleCheckbox={handleToggleCheckbox}
+          //   callbackChangeTodoText={handleChangeTodoText}
+          // />
+          <TodoContainer key={todo.id} todo={todo} />
+        ))}
       </ul>
     </div>
   );

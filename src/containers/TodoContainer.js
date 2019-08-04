@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import uuid from "../utils/uuid";
 import * as actions from "../store/module/todoList";
-import Main from "../components/Main";
+import Todo from "../components/Todo";
 
-const MainContainer = props => {
-  // console.log("MainContainer: ", props);
-  return <Main todos={props} />;
+const TodoContainer = props => {
+  console.log("TodoContainer: ", props);
+  return <Todo todo={props} />;
 };
 
 const mapStateToProps = state => ({
@@ -16,7 +15,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAddTodo: categoryId => dispatch(actions.addTodo(categoryId, uuid())),
+  // handleAddTodo: categoryId => dispatch(actions.addTodo(categoryId, uuid())),
   handleToggleCheckbox: (categoryId, id) =>
     dispatch(actions.toggleComplete(categoryId, id)),
   handleChangeTodoText: (categoryId, id, text) =>
@@ -26,4 +25,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainContainer);
+)(TodoContainer);

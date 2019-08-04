@@ -7,12 +7,13 @@ class Todo extends Component {
       editable: false,
       todoText: ""
     };
+    console.log('Todo: ', props.todo);
   }
 
   componentDidMount() {
     this.setState({
       ...this.state,
-      todoText: this.props.todo.name
+      todoText: this.props.todo.todo.name
     });
   }
 
@@ -38,23 +39,27 @@ class Todo extends Component {
   };
 
   onKeyDown = e => {
-    const {
-      todo: { categoryId, id },
-      callbackChangeTodoText
-    } = this.props;
     if (e.key === "Enter") {
-      console.log("Todo: Enter");
-      callbackChangeTodoText(categoryId, id, e.target.value);
+      // console.log("Todo: Enter");
+      this.saveTodo(e.target.value);
     }
   };
+
+  saveTodo = (todoText) => {
+    const {
+      todo: { categoryId, id },
+      handleChangeTodoText
+    } = this.props.todo;
+    handleChangeTodoText(categoryId, id, todoText);
+  }
 
   render() {
     const {
       // todo: { name, complete, id, categoryId },
       todo: { complete, id, categoryId },
-      callbackToggleCheckbox
-    } = this.props;
-    // console.log('Todo:', id, name, complete);
+      handleToggleCheckbox
+    } = this.props.todo;
+    console.log('Todo:', id, complete);
     const style = {
       textDecoration: complete ? "line-through" : "none"
     };
@@ -66,7 +71,7 @@ class Todo extends Component {
           <span className="todo-checkbox">
             <input
               type="checkbox"
-              onChange={e => callbackToggleCheckbox(categoryId, id)}
+              onChange={e => handleToggleCheckbox(categoryId, id)}
             />
           </span>
           <span>
@@ -75,6 +80,7 @@ class Todo extends Component {
               value={this.state.todoText}
               onChange={this.onChangeTodoText}
               onKeyDown={this.onKeyDown}
+              onBlur={e => this.saveTodo(e.target.value)}
             />
           </span>
         </li>
