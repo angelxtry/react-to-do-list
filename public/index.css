@@ -4,7 +4,7 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 200px;
+  width: 250px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -14,10 +14,11 @@ body {
   padding-top: 20px;
 }
 
-.sidenav .category {
+.sidenav li {
   padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
+  /* text-decoration: none; */
+  /* font-size: 25px; */
+  border-bottom: 20px;
   color: #818181;
   display: block;
 }
@@ -27,14 +28,10 @@ body {
 }
 
 .main {
-  margin-left: 200px; /* Same as the width of the sidenav */
+  margin-left: 250px; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
-
-/* .todo-checkbox {
-  display: inline;
-} */
 
 .main .todo-item:hover {
   border: thick double #32a1ce;

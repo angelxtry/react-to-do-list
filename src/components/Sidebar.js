@@ -7,6 +7,7 @@ const Sidebar = props => {
   const {
     categories,
     handleAddCategory,
+    handleDelCategory,
     handleSelectCategory
   } = props.categoryList;
   return (
@@ -17,6 +18,7 @@ const Sidebar = props => {
             key={category.id}
             category={category}
             callback={handleSelectCategory}
+            callbackDelCategory={handleDelCategory}
           />
         ))}
       </ul>

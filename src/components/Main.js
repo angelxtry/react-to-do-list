@@ -4,7 +4,11 @@ import TodoContainer from "../containers/TodoContainer";
 
 const Main = props => {
   // console.log("Main: ", props);
-  const { selectedCategoryId, categories, handleAddTodo } = props.mainContainer;
+  const {
+    selectedCategoryId,
+    categories,
+    handleAddTodo,
+  } = props.mainContainer;
   // console.log("Main selectedCategoryId: ", selectedCategoryId);
   // console.log("Main categories: ", categories);
   const [selectedCategory] = categories.filter(

@@ -123,7 +123,9 @@ const todoList = (state = initialState, action) => {
     case DEL_CATEGORY:
       return {
         ...state,
-        state: state.categories.filter(category => category.id !== action.id)
+        categories: state.categories.filter(
+          category => category.id !== action.id
+        )
       };
     case SELECT_CATEGORY: {
       // console.log('Reducer-SELECT_CATEGORY: ', state);
