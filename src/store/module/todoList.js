@@ -3,6 +3,7 @@ const DEL_CATEGORY = "todo/DEL_CATEGORY";
 const SELECT_CATEGORY = "todo/SELECT_CATEGORY";
 const ADD_TODO = "todo/ADD_TODO";
 const DEL_TODO = "todo/DEL_TODO";
+const CHANGE_TODO_TEXT = "todo/CHANGE_TODO_TEXT";
 const TOGGLE_COMPLETE = "todo/TOGGLE_COMPLETE";
 
 export const addCategory = id => ({
@@ -21,11 +22,11 @@ export const selectCategory = id => ({
   id
 });
 
-export const addTodo = (categoryId, id, name) => ({
+// export const addTodo = (categoryId, id, name) => ({
+export const addTodo = (categoryId, id) => ({
   type: ADD_TODO,
   categoryId,
-  id,
-  name
+  id
 });
 
 export const delTodo = (categoryId, id) => ({
@@ -34,8 +35,16 @@ export const delTodo = (categoryId, id) => ({
   id
 });
 
-export const toggleComplete = id => ({
+export const changeTodoText = (categoryId, id, text) => ({
+  type: CHANGE_TODO_TEXT,
+  categoryId,
+  id,
+  text
+});
+
+export const toggleComplete = (categoryId, id) => ({
   type: TOGGLE_COMPLETE,
+  categoryId,
   id
 });
 
@@ -127,20 +136,20 @@ const todoList = (state = initialState, action) => {
       };
     }
     case ADD_TODO: {
-      const newList = state.categories.map(category => {
+      const newCategories = state.categories.map(category => {
         if (category.id !== action.categoryId) {
           return category;
         }
         category.todos = category.todos.concat({
           categoryId: action.categoryId,
           id: action.id,
-          name: action.name
+          name: ""
         });
         return category;
       });
       return {
         ...state,
-        state: newList
+        categories: newCategories
       };
     }
     case DEL_TODO: {
@@ -156,16 +165,34 @@ const todoList = (state = initialState, action) => {
         state: newList
       };
     }
+    case CHANGE_TODO_TEXT: {
+      const newList = state.categories.map(category => {
+        if (category.id === action.categoryId) {
+          category.todos = category.todos.map(todo => {
+            if (todo.id === action.id) {
+              todo.name = action.text;
+            }
+            return todo;
+          });
+        }
+        return category;
+      });
+      return {
+        ...state,
+        categories: newList
+      };
+    }
     case TOGGLE_COMPLETE: {
       // console.log('Reducer-TOGGLE_COMPLETE before: ', state);
       const newList = state.categories.map(category => {
-        const newTodo = category.todos.map(todo => {
-          if (todo.id === action.id) {
-            todo.complete = !todo.complete;
-          }
-          return todo;
-        });
-        category.todos = newTodo;
+        if (category.id === action.categoryId) {
+          category.todos = category.todos.map(todo => {
+            if (todo.id === action.id) {
+              todo.complete = !todo.complete;
+            }
+            return todo;
+          });
+        }
         return category;
       });
       // console.log('Reducer-TOGGLE_COMPLETE after: ', state);

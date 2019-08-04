@@ -2,7 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 
 import uuid from "../utils/uuid";
-import { addTodo, toggleComplete } from "../store/module/todoList";
+import {
+  addTodo,
+  changeTodoText,
+  toggleComplete
+} from "../store/module/todoList";
 import Main from "../components/Main";
 
 const MainContainer = props => {
@@ -16,8 +20,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAddTodo: () => dispatch(addTodo(uuid())),
-  handleToggleCheck: id => dispatch(toggleComplete(id))
+  handleAddTodo: categoryId => dispatch(addTodo(categoryId, uuid())),
+  handleToggleCheckbox: (categoryId, id) =>
+    dispatch(toggleComplete(categoryId, id)),
+  handleChangeTodoText: (categoryId, id, text) =>
+    dispatch(changeTodoText(categoryId, id, text))
 });
 
 export default connect(

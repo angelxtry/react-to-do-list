@@ -11,13 +11,15 @@ const Sidebar = props => {
   } = props.categoryList;
   return (
     <div>
-      {categories.map(category => (
-        <Category
-          key={category.id}
-          category={category}
-          callback={handleSelectCategory}
-        />
-      ))}
+      <ul>
+        {categories.map(category => (
+          <Category
+            key={category.id}
+            category={category}
+            callback={handleSelectCategory}
+          />
+        ))}
+      </ul>
       <button onClick={handleAddCategory}>목록 추가</button>
     </div>
   );
