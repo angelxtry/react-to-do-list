@@ -109,8 +109,8 @@ const initialState = {
 const todoList = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CATEGORY: {
-      console.log(state.categories);
-      console.log(action);
+      // console.log(state.categories);
+      // console.log(action);
       return {
         ...state,
         categories: state.categories.concat({

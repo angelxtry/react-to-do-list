@@ -5,6 +5,7 @@ class Todo extends Component {
     super(props);
     this.state = {
       editable: false,
+      isClicked: false,
       todoText: ""
     };
     // console.log("Todo: ", props);
@@ -31,6 +32,13 @@ class Todo extends Component {
     }
   };
 
+  onClickLiTag = () => {
+    this.setState({
+      ...this.state,
+      isClicked: !this.state.isClicked
+    });
+  };
+
   saveTodo = todoText => {
     const {
       todoList: { categoryId, id },
@@ -48,11 +56,18 @@ class Todo extends Component {
     const style = {
       textDecoration: complete ? "line-through" : "none"
     };
+    const styleLiTag = {
+      backgroundColor: this.state.isClicked ? "grey" : "white"
+    };
     // console.log("Todo state: ", this.state);
     // console.log("Todo props: ", this.props);
     return (
       <div>
-        <li>
+        <li
+          className="todo-item"
+          onClick={this.onClickLiTag}
+          style={styleLiTag}
+        >
           <span className="todo-checkbox">
             <input
               type="checkbox"

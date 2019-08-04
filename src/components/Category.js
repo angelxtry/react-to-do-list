@@ -1,7 +1,7 @@
 import React from "react";
 
 const Category = props => {
-  console.log("Category: ", props);
+  // console.log("Category: ", props);
   const { category, callback } = props;
   return (
     <li>
