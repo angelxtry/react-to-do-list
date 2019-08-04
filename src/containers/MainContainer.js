@@ -7,7 +7,7 @@ import Main from "../components/Main";
 
 const MainContainer = props => {
   // console.log("MainContainer: ", props);
-  return <Main todos={props} />;
+  return <Main mainContainer={props} />;
 };
 
 const mapStateToProps = state => ({

@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleAddCategory: () => dispatch(actions.addCategory(uuid())),
   handleDelCategory: id => dispatch(actions.delCategory(id)),
-  handleSelectCategory: id => dispatch(actions.selectCategory(id)),
+  handleSelectCategory: id => dispatch(actions.selectCategory(id))
 });
 
 export default connect(

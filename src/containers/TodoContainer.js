@@ -5,8 +5,8 @@ import * as actions from "../store/module/todoList";
 import Todo from "../components/Todo";
 
 const TodoContainer = props => {
-  console.log("TodoContainer: ", props);
-  return <Todo todo={props} />;
+  // console.log("TodoContainer: ", props);
+  return <Todo todoContainer={props} />;
 };
 
 const mapStateToProps = state => ({
@@ -15,7 +15,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // handleAddTodo: categoryId => dispatch(actions.addTodo(categoryId, uuid())),
   handleToggleCheckbox: (categoryId, id) =>
     dispatch(actions.toggleComplete(categoryId, id)),
   handleChangeTodoText: (categoryId, id, text) =>

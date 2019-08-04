@@ -7,29 +7,15 @@ class Todo extends Component {
       editable: false,
       todoText: ""
     };
-    console.log('Todo: ', props.todo);
+    // console.log("Todo: ", props);
   }
 
   componentDidMount() {
     this.setState({
       ...this.state,
-      todoText: this.props.todo.todo.name
+      todoText: this.props.todoContainer.todoList.name
     });
   }
-
-  onSecondClick = (() => {
-    let selectedTodoId = null;
-    return id => {
-      if (selectedTodoId === id) {
-        // console.log("selectedTodo Equal");
-        this.setState({
-          ...this.state,
-          editable: !this.state.editable
-        });
-      }
-      selectedTodoId = id;
-    };
-  })();
 
   onChangeTodoText = e => {
     this.setState({
@@ -45,21 +31,20 @@ class Todo extends Component {
     }
   };
 
-  saveTodo = (todoText) => {
+  saveTodo = todoText => {
     const {
-      todo: { categoryId, id },
+      todoList: { categoryId, id },
       handleChangeTodoText
-    } = this.props.todo;
+    } = this.props.todoContainer;
     handleChangeTodoText(categoryId, id, todoText);
-  }
+  };
 
   render() {
     const {
-      // todo: { name, complete, id, categoryId },
-      todo: { complete, id, categoryId },
+      todoList: { complete, id, categoryId },
       handleToggleCheckbox
-    } = this.props.todo;
-    console.log('Todo:', id, complete);
+    } = this.props.todoContainer;
+    // console.log("Todo:", id, complete);
     const style = {
       textDecoration: complete ? "line-through" : "none"
     };
@@ -88,6 +73,20 @@ class Todo extends Component {
     );
   }
 }
+
+// onSecondClick = (() => {
+//   let selectedTodoId = null;
+//   return id => {
+//     if (selectedTodoId === id) {
+//       // console.log("selectedTodo Equal");
+//       this.setState({
+//         ...this.state,
+//         editable: !this.state.editable
+//       });
+//     }
+//     selectedTodoId = id;
+//   };
+// })();
 
 // const Todo = props => {
 //   // console.log("Todo: ", props);

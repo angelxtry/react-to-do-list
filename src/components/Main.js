@@ -1,17 +1,10 @@
 import React from "react";
 
 import TodoContainer from "../containers/TodoContainer";
-// import Todo from "./Todo";
 
 const Main = props => {
-  console.log("Main: ", props);
-  const {
-    selectedCategoryId,
-    categories,
-    handleAddTodo,
-    // handleToggleCheckbox,
-    // handleChangeTodoText
-  } = props.todos;
+  // console.log("Main: ", props);
+  const { selectedCategoryId, categories, handleAddTodo } = props.mainContainer;
   // console.log("Main selectedCategoryId: ", selectedCategoryId);
   // console.log("Main categories: ", categories);
   const [selectedCategory] = categories.filter(
@@ -20,7 +13,6 @@ const Main = props => {
   // console.log('Main selectedCategory: ', selectedCategory);
   const addTodo = categoryId => {
     if (isLastTodoNameBlank(selectedCategory.todos)) {
-      // console.log("Main addTodo: ", selectedCategory.todos);
       return null;
     }
     return handleAddTodo(categoryId);
@@ -35,13 +27,7 @@ const Main = props => {
       <button onClick={() => addTodo(selectedCategoryId)}>+</button>
       <ul>
         {selectedCategory.todos.map(todo => (
-          // <Todo
-          //   key={todo.id}
-          //   todo={todo}
-          //   callbackToggleCheckbox={handleToggleCheckbox}
-          //   callbackChangeTodoText={handleChangeTodoText}
-          // />
-          <TodoContainer key={todo.id} todo={todo} />
+          <TodoContainer key={todo.id} todoList={todo} />
         ))}
       </ul>
     </div>

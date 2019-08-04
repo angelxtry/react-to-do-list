@@ -22,7 +22,6 @@ export const selectCategory = id => ({
   id
 });
 
-// export const addTodo = (categoryId, id, name) => ({
 export const addTodo = (categoryId, id) => ({
   type: ADD_TODO,
   categoryId,

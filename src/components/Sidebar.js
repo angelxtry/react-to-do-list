@@ -3,7 +3,7 @@ import React from "react";
 import Category from "./Category";
 
 const Sidebar = props => {
-  console.log("Sidebar: ", props);
+  // console.log("Sidebar: ", props);
   const {
     categories,
     handleAddCategory,
