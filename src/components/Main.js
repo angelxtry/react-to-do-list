@@ -3,12 +3,14 @@ import React from "react";
 import Todo from "./Todo";
 
 const Main = props => {
-  console.log("Main: ", props);
+  // console.log("Main: ", props);
   const { selectedCategoryId, categories, handleToggleCheck } = props.todos;
+  console.log("Main selectedCategoryId: ", selectedCategoryId);
+  console.log("Main categories: ", categories);
   const [selectedCategory] = categories.filter(
     category => category.id === selectedCategoryId
   );
-  console.log(selectedCategory);
+  console.log('Main selectedCategory: ', selectedCategory);
   return (
     <div>
       <h2>{selectedCategory.name}</h2>

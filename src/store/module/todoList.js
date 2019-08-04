@@ -1,9 +1,3 @@
-// action
-// add category
-// delete category
-// add todo
-// delete todo
-// toggle complete
 const ADD_CATEGORY = "todo/ADD_CATEGORY";
 const DEL_CATEGORY = "todo/DEL_CATEGORY";
 const SELECT_CATEGORY = "todo/SELECT_CATEGORY";
@@ -44,17 +38,6 @@ export const toggleComplete = id => ({
   type: TOGGLE_COMPLETE,
   id
 });
-
-// data
-// [{
-//   id key
-//   name
-//   todos [{
-//     id key
-//     name
-//     complete
-//   }]
-// }]
 
 const initialState = {
   selectedCategoryId: "00001",
@@ -174,14 +157,19 @@ const todoList = (state = initialState, action) => {
       };
     }
     case TOGGLE_COMPLETE: {
+      // console.log('Reducer-TOGGLE_COMPLETE before: ', state);
       const newList = state.categories.map(category => {
-        return category.todos.map(todo => {
+        const newTodo = category.todos.map(todo => {
           if (todo.id === action.id) {
             todo.complete = !todo.complete;
           }
           return todo;
         });
+        category.todos = newTodo;
+        return category;
       });
+      // console.log('Reducer-TOGGLE_COMPLETE after: ', state);
+      // console.log('Reducer-TOGGLE_COMPLETE newList: ', newList);
       return {
         ...state,
         categories: newList
