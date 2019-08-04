@@ -17,10 +17,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleAddTodo: categoryId => dispatch(actions.addTodo(categoryId, uuid())),
-  handleToggleCheckbox: (categoryId, id) =>
-    dispatch(actions.toggleComplete(categoryId, id)),
-  handleChangeTodoText: (categoryId, id, text) =>
-    dispatch(actions.changeTodoText(categoryId, id, text))
 });
 
 export default connect(

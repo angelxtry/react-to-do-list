@@ -85,7 +85,7 @@ const initialState = {
           complete: false
         },
         {
-          categoryId: "00001",
+          categoryId: "00002",
           id: "20002",
           name: "category2-todo2",
           complete: false
@@ -153,15 +153,14 @@ const todoList = (state = initialState, action) => {
     }
     case DEL_TODO: {
       const newList = state.categories.map(category => {
-        if (category.id !== action.categoryId) {
-          return category;
+        if (category.id === action.categoryId) {
+          category.todos = category.todos.filter(todo => todo.id !== action.id);
         }
-        category.todos = category.todos.filter(todo => todo.id !== action.id);
         return category;
       });
       return {
         ...state,
-        state: newList
+        categories: newList
       };
     }
     case CHANGE_TODO_TEXT: {

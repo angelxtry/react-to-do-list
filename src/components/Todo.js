@@ -49,8 +49,9 @@ class Todo extends Component {
 
   render() {
     const {
-      todoList: { complete, id, categoryId },
-      handleToggleCheckbox
+      todoList: { categoryId, id, complete },
+      handleToggleCheckbox,
+      handleDelTodo
     } = this.props.todoContainer;
     // console.log("Todo:", id, complete);
     const style = {
@@ -83,6 +84,7 @@ class Todo extends Component {
               onBlur={e => this.saveTodo(e.target.value)}
             />
           </span>
+          <button onClick={() => handleDelTodo(categoryId, id)}>삭제</button>
         </li>
       </div>
     );
