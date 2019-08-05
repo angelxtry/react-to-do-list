@@ -1,5 +1,6 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: sans-serif;
+  background-color: #1E2022;
 }
 
 .sidenav {
@@ -9,36 +10,102 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #2C2D30;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 95px;
+}
+
+.sidenav .btn-add-category {
+  bottom: 0;
+}
+
+.sidenav ul {
+  margin: 0;
+  padding: 0;
 }
 
 .sidenav li {
-  padding: 6px 8px 6px 16px;
+  padding: 0;
   /* text-decoration: none; */
   /* font-size: 25px; */
   border-bottom: 20px;
-  color: #818181;
+  /* color: #818181; */
   display: block;
 }
 
-.sidenav .category:hover {
-  /* color: #f1f1f1; */
-  color: #111;
+.sidenav input {
+  background-color: #2C2D30;
+  /* margin-bottom: 10px; */
+  border: 0;
+  padding: 10px;
+  color: #fff;
+  /* width: 200px;
+  height: 40px; */
+  font-size: 16px;
+  display: inline;
 }
+
+.sidenav .btn-delete-category {
+  margin-left: 10px;
+  display: inline;
+  background-color: #2C2D30;
+  color: #fff;
+  border: 0;
+}
+/* .sidenav li:hover {
+  background-color: #1096DD;
+}
+
+.sidenav input:hover {
+  background-color: #1096DD;
+} */
 
 .main {
+  height: 100%;
   margin-left: 250px; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  padding: 20px 10px;
+  background-color: #1E2022;
 }
 
-.main .todo-item:hover {
+.main .selected-category-name {
+  color: #FF9500;
+}
+
+.main .btn-add-todo {
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 30px;
+  right: 0;
+  font-size: 15px;
+}
+
+.main ol {
+  color: #fff;
+  font-size: 14px;
+}
+
+.main li {
+  background-color: #1E2022;
+}
+
+.main .input-todo {
+  background-color: #1E2022;
+  color: #fff;
+  border: 0;
+  font-size: 14px;
+  margin: 10px 0px;
+}
+
+.main .btn-del-todo {
+  right: 0;
+}
+
+/* .main .todo-item:hover {
   border: thick double #32a1ce;
-}
+} */
 
-@media screen and (max-height: 450px) {
+/* @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
-}
+} */

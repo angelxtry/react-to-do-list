@@ -32,13 +32,6 @@ class Todo extends Component {
     }
   };
 
-  onClickLiTag = () => {
-    this.setState({
-      ...this.state,
-      isClicked: !this.state.isClicked
-    });
-  };
-
   saveTodo = todoText => {
     const {
       todoList: { categoryId, id },
@@ -57,18 +50,9 @@ class Todo extends Component {
     const style = {
       textDecoration: complete ? "line-through" : "none"
     };
-    const styleLiTag = {
-      backgroundColor: this.state.isClicked ? "grey" : "white"
-    };
-    // console.log("Todo state: ", this.state);
-    // console.log("Todo props: ", this.props);
     return (
       <div>
-        <li
-          className="todo-item"
-          onClick={this.onClickLiTag}
-          style={styleLiTag}
-        >
+        <li className="todo-item">
           <span className="todo-checkbox">
             <input
               type="checkbox"
@@ -77,6 +61,7 @@ class Todo extends Component {
           </span>
           <span>
             <input
+              className="input-todo"
               style={style}
               value={this.state.todoText}
               onChange={this.onChangeTodoText}
@@ -84,63 +69,16 @@ class Todo extends Component {
               onBlur={e => this.saveTodo(e.target.value)}
             />
           </span>
-          <button onClick={() => handleDelTodo(categoryId, id)}>삭제</button>
+          <button
+            className="btn-del-todo"
+            onClick={() => handleDelTodo(categoryId, id)}
+          >
+            삭제
+          </button>
         </li>
       </div>
     );
   }
 }
-
-// onSecondClick = (() => {
-//   let selectedTodoId = null;
-//   return id => {
-//     if (selectedTodoId === id) {
-//       // console.log("selectedTodo Equal");
-//       this.setState({
-//         ...this.state,
-//         editable: !this.state.editable
-//       });
-//     }
-//     selectedTodoId = id;
-//   };
-// })();
-
-// const Todo = props => {
-//   // console.log("Todo: ", props);
-//   let editable = false;
-//   const {
-//     todo: { name, complete, id },
-//     callbackToggleCheckbox
-//   } = props;
-//   // console.log('Todo:', id, name, complete);
-//   const style = {
-//     textDecoration: complete ? "line-through" : "none"
-//   };
-//   const styleEditable = {
-//     // disabled:
-//   };
-//   const onSecondClick = (() => {
-//     let selectedTodoId = null;
-//     return id => {
-//       if (selectedTodoId === id) {
-//         console.log("selectedTodo Equal");
-//         editable = !editable;
-//       }
-//       selectedTodoId = id;
-//     };
-//   })();
-//   return (
-//     <div>
-//       <input type="checkbox" onChange={e => callbackToggleCheckbox(id)} />
-//       {editable ? (
-//         <input placeholder={name} onClick={() => onSecondClick(id)} />
-//       ) : (
-//         <span style={style} onClick={() => onSecondClick(id)}>
-//           {name}
-//         </span>
-//       )}
-//     </div>
-//   );
-// };
 
 export default Todo;

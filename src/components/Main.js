@@ -4,13 +4,7 @@ import TodoContainer from "../containers/TodoContainer";
 
 const Main = props => {
   // console.log("Main: ", props);
-  const {
-    selectedCategoryId,
-    categories,
-    handleAddTodo,
-  } = props.mainContainer;
-  // console.log("Main selectedCategoryId: ", selectedCategoryId);
-  // console.log("Main categories: ", categories);
+  const { selectedCategoryId, categories, handleAddTodo } = props.mainContainer;
   const [selectedCategory] = categories.filter(
     category => category.id === selectedCategoryId
   );
@@ -27,13 +21,20 @@ const Main = props => {
   };
   return (
     <div>
-      <span style={style}>{selectedCategory.name}</span>
-      <button onClick={() => addTodo(selectedCategoryId)}>+</button>
-      <ul>
+      <span className="selected-category-name" style={style}>
+        {selectedCategory.name}
+      </span>
+      <button
+        className="btn-add-todo"
+        onClick={() => addTodo(selectedCategoryId)}
+      >
+        +
+      </button>
+      <ol>
         {selectedCategory.todos.map(todo => (
           <TodoContainer key={todo.id} todoList={todo} />
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };

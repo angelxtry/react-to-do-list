@@ -24,7 +24,9 @@ const Sidebar = props => {
           )
         )}
       </ul>
-      <button onClick={handleAddCategory}>목록 추가</button>
+      <button className="btn-add-category" onClick={handleAddCategory}>
+        목록 추가
+      </button>
     </div>
   );
 };
