@@ -30,6 +30,11 @@ class Todo extends Component {
       // console.log("Todo: Enter");
       this.saveTodo(e.target.value);
     }
+    if (e.keyCode === 27) {
+      this.setState({
+        todoText: ""
+      })
+    }
   };
 
   saveTodo = todoText => {
