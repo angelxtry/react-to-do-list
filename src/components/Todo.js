@@ -63,6 +63,7 @@ class Todo extends Component {
           <span className="todo-checkbox">
             <input
               type="checkbox"
+              checked={complete}
               onChange={e => handleToggleCheckbox(categoryId, id)}
             />
           </span>
