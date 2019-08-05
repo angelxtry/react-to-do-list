@@ -28,21 +28,23 @@ class Todo extends Component {
   onKeyDown = e => {
     if (e.key === "Enter") {
       // console.log("Todo: Enter");
-      this.saveTodo(e.target.value);
+      this.manageTodo(e.target.value);
     }
     if (e.keyCode === 27) {
       this.setState({
         todoText: ""
-      })
+      });
     }
   };
 
-  saveTodo = todoText => {
+  manageTodo = todoText => {
     const {
       todoList: { categoryId, id },
-      handleChangeTodoText
+      handleChangeTodoText,
+      handleDelTodo
     } = this.props.todoContainer;
-    handleChangeTodoText(categoryId, id, todoText);
+    if (todoText === "") handleDelTodo(categoryId, id);
+    else handleChangeTodoText(categoryId, id, todoText);
   };
 
   render() {
@@ -71,7 +73,7 @@ class Todo extends Component {
               value={this.state.todoText}
               onChange={this.onChangeTodoText}
               onKeyDown={this.onKeyDown}
-              onBlur={e => this.saveTodo(e.target.value)}
+              onBlur={e => this.manageTodo(e.target.value)}
             />
           </span>
           <button
