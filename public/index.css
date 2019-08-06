@@ -12,7 +12,12 @@ body {
   left: 0;
   background-color: #2C2D30;
   overflow-x: hidden;
-  padding-top: 95px;
+  padding-top: 20px;
+}
+
+.sidenav .input-search {
+  padding: 20px;
+  margin-bottom: 10px;
 }
 
 .sidenav .btn-add-category {

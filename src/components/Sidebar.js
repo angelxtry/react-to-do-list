@@ -7,6 +7,16 @@ const Sidebar = props => {
   const { categories, handleAddCategory } = props.categoryList;
   return (
     <div>
+      <div>
+        <input
+          className="input-search"
+          // value={this.state.todoText}
+          // onChange={this.onChangeTodoText}
+          // onKeyDown={this.onKeyDown}
+          // onBlur={e => this.manageTodo(e.target.value)}
+        />
+        >
+      </div>
       <ul>
         {categories.map((category, index) =>
           index === categories.length - 1 ? (
