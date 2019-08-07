@@ -4,8 +4,6 @@ class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editable: false,
-      isClicked: false,
       todoText: ""
     };
     // console.log("Todo: ", props);

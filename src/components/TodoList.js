@@ -8,20 +8,17 @@ const TodoList = props => {
   const [selectedCategory] = categories.filter(
     category => category.id === selectedCategoryId
   );
-  // console.log('TodoList selectedCategory: ', selectedCategory);
+
   const addTodo = categoryId => {
     if (isLastTodoNameBlank(selectedCategory.todos)) {
       return null;
     }
     return handleAddTodo(categoryId);
   };
-  const style = {
-    fontSize: "50px",
-    fontWeight: "900"
-  };
+
   return (
     <div>
-      <span className="selected-category-name" style={style}>
+      <span className="selected-category-name">
         {selectedCategory.name}
       </span>
       <button

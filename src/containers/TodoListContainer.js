@@ -11,7 +11,6 @@ const TodoListContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  // searchText: state.todoList.searchText,
   selectedCategoryId: state.todoList.selectedCategoryId,
   categories: state.todoList.categories
 });

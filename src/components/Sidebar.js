@@ -9,6 +9,13 @@ class Sidebar extends Component {
       searchText: ""
     };
   }
+
+  resetSearchText = () => {
+    this.setState({
+      searchText: ""
+    });
+  };
+
   onChangeSearchText = e => {
     // console.log(e.target.value);
     this.setState({
@@ -19,8 +26,8 @@ class Sidebar extends Component {
 
   onKeyDown = e => {
     if (e.keyCode === 27) {
-      this.setState(function(prevState, props){
-        return {searchText: ""};
+      this.setState(function(prevState, props) {
+        return { searchText: "" };
       });
     }
     this.props.categoryList.handleSearch("");
@@ -28,10 +35,7 @@ class Sidebar extends Component {
 
   render() {
     // console.log("Sidebar render: ", this.props.categoryList);
-    const {
-      categories,
-      handleAddCategory
-    } = this.props.categoryList;
+    const { categories, handleAddCategory } = this.props.categoryList;
     return (
       <div>
         <div>
@@ -49,12 +53,14 @@ class Sidebar extends Component {
                 key={category.id}
                 category={category}
                 focus={true}
+                callbackResetSearchText={this.resetSearchText}
               />
             ) : (
               <CategoryContainer
                 key={category.id}
                 category={category}
                 focus={false}
+                callbackResetSearchText={this.resetSearchText}
               />
             )
           )}

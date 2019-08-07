@@ -75,6 +75,8 @@ body {
 
 .main .selected-category-name {
   color: #FF9500;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .main .search-category-name {

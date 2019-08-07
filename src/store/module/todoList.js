@@ -153,10 +153,8 @@ const todoList = (state = initialState, action) => {
         })
       };
     case SELECT_CATEGORY: {
-      // console.log('Reducer-SELECT_CATEGORY: ', state);
-      // console.log('Reducer-SELECT_CATEGORY: ', action);
-      // console.log('Reducer-SELECT_CATEGORY: ', {...state.categories});
       return {
+        searchText: '',
         selectedCategoryId: action.id,
         categories: [...state.categories]
       };
@@ -208,7 +206,6 @@ const todoList = (state = initialState, action) => {
       };
     }
     case TOGGLE_COMPLETE: {
-      // console.log('Reducer-TOGGLE_COMPLETE before: ', state);
       const newList = state.categories.map(category => {
         if (category.id === action.categoryId) {
           category.todos = category.todos.map(todo => {
@@ -220,8 +217,6 @@ const todoList = (state = initialState, action) => {
         }
         return category;
       });
-      // console.log('Reducer-TOGGLE_COMPLETE after: ', state);
-      // console.log('Reducer-TOGGLE_COMPLETE newList: ', newList);
       return {
         ...state,
         categories: newList
@@ -236,7 +231,7 @@ const todoList = (state = initialState, action) => {
           const newTodos = category.todos.filter(todo =>
             todo.name.includes(action.searchText)
           );
-          console.log('SEARCH_CATEGORY_AND_TODO newTodos: ', newTodos);
+          // console.log('SEARCH_CATEGORY_AND_TODO newTodos: ', newTodos);
           if (newTodos.length >= 1) {
             newCategories.push({
               id: category.id,

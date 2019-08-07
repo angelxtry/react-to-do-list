@@ -45,6 +45,16 @@ class Category extends Component {
     }
   };
 
+  onClickCategory = () => {
+    const {
+      category,
+      handleSelectCategory,
+      callbackResetSearchText
+    } = this.props.categoryContainer;
+    callbackResetSearchText();
+    handleSelectCategory(category.id);
+  }
+
   saveCategory = categoryText => {
     const {
       category: { id },
@@ -55,9 +65,7 @@ class Category extends Component {
 
   render() {
     const {
-      category,
       focus,
-      handleSelectCategory
     } = this.props.categoryContainer;
 
     return (
@@ -67,7 +75,7 @@ class Category extends Component {
             className="category"
             value={this.state.categoryText}
             onChange={this.onChangeCategoryText}
-            onClick={() => handleSelectCategory(category.id)}
+            onClick={this.onClickCategory}
             onKeyDown={this.onKeyDown}
             onBlur={e => this.saveCategory(e.target.value)}
             autoFocus={focus}
