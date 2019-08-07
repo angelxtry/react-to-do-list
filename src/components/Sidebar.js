@@ -47,23 +47,14 @@ class Sidebar extends Component {
           />
         </div>
         <ul>
-          {categories.map((category, index) =>
-            index === categories.length - 1 ? (
-              <CategoryContainer
-                key={category.id}
-                category={category}
-                focus={true}
-                callbackResetSearchText={this.resetSearchText}
-              />
-            ) : (
-              <CategoryContainer
-                key={category.id}
-                category={category}
-                focus={false}
-                callbackResetSearchText={this.resetSearchText}
-              />
-            )
-          )}
+          {categories.map((category, index) => (
+            <CategoryContainer
+              key={category.id}
+              category={category}
+              isNew={category.isNew}
+              callbackResetSearchText={this.resetSearchText}
+            />
+          ))}
         </ul>
         <button className="btn-add-category" onClick={handleAddCategory}>
           목록 추가

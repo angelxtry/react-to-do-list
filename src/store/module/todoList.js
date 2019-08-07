@@ -67,6 +67,7 @@ const initialState = {
   categories: [
     {
       id: "00001",
+      isNew: false,
       name: "미리알림",
       todos: [
         {
@@ -91,6 +92,7 @@ const initialState = {
     },
     {
       id: "00002",
+      isNew: false,
       name: "category2",
       todos: [
         {
@@ -109,6 +111,7 @@ const initialState = {
     },
     {
       id: "00003",
+      isNew: false,
       name: "category3",
       todos: [
         {
@@ -130,6 +133,7 @@ const todoList = (state = initialState, action) => {
         ...state,
         categories: state.categories.concat({
           id: action.id,
+          isNew: true,
           name: action.name,
           todos: []
         })
@@ -148,6 +152,7 @@ const todoList = (state = initialState, action) => {
         categories: state.categories.map(category => {
           if (category.id === action.id) {
             category.name = action.text;
+            category.isNew = false;
           }
           return category;
         })

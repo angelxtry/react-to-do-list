@@ -16,6 +16,11 @@ class Category extends Component {
       ...this.state,
       categoryText: this.props.categoryContainer.category.name
     });
+
+    const { isNew } = this.props.categoryContainer;
+    if (isNew) {
+      this.onClickCategory();
+    }
   }
 
   onDelCategory = () => {
@@ -53,7 +58,7 @@ class Category extends Component {
     } = this.props.categoryContainer;
     callbackResetSearchText();
     handleSelectCategory(category.id);
-  }
+  };
 
   saveCategory = categoryText => {
     const {
@@ -64,10 +69,7 @@ class Category extends Component {
   };
 
   render() {
-    const {
-      focus,
-    } = this.props.categoryContainer;
-
+    const { isNew } = this.props.categoryContainer;
     return (
       <li>
         <span>
@@ -78,7 +80,7 @@ class Category extends Component {
             onClick={this.onClickCategory}
             onKeyDown={this.onKeyDown}
             onBlur={e => this.saveCategory(e.target.value)}
-            autoFocus={focus}
+            autoFocus={isNew}
           />
         </span>
         <button className="btn-delete-category" onClick={this.onDelCategory}>
