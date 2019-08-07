@@ -9,6 +9,7 @@ const CategoryContainer = props => {
 };
 
 const mapStateToProps = state => ({
+  // searchText: state.todoList.searchText,
   categories: state.todoList.categories
 });
 

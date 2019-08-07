@@ -2,18 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 
 import * as actions from "../store/module/todoList";
-import Main from "../components/Main";
+import SearchResults from "../components/SearchResults";
 import uuid from "../utils/uuid";
 
-const MainContainer = props => {
+const SearchResultsContainer = props => {
   // console.log("MainContainer: ", props);
-  return <Main mainContainer={props} />;
+  return <SearchResults searchResultsContainer={props} />;
 };
 
 const mapStateToProps = state => ({
   searchText: state.todoList.searchText,
   selectedCategoryId: state.todoList.selectedCategoryId,
-  categories: state.todoList.categories
+  categories: state.todoList.categories,
+  searchResults: state.todoList.searchResults
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainContainer);
+)(SearchResultsContainer);

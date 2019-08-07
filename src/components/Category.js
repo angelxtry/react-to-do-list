@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+const DEFAULT_CATEGORY_ID = "00001";
+
 class Category extends Component {
   constructor(props) {
     super(props);
@@ -22,11 +24,11 @@ class Category extends Component {
       handleDelCategory,
       handleSelectCategory
     } = this.props.categoryContainer;
-    if (category.id === "00001") {
+    if (category.id === DEFAULT_CATEGORY_ID) {
       alert("미리알림은 지우면 안되요!");
       return null;
     }
-    handleSelectCategory("00001");
+    handleSelectCategory(DEFAULT_CATEGORY_ID);
     handleDelCategory(category.id);
   };
 
@@ -39,7 +41,6 @@ class Category extends Component {
 
   onKeyDown = e => {
     if (e.key === "Enter") {
-      // console.log("Todo: Enter");
       this.saveCategory(e.target.value);
     }
   };

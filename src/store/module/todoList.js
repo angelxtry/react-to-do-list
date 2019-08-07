@@ -6,6 +6,7 @@ const ADD_TODO = "todo/ADD_TODO";
 const DEL_TODO = "todo/DEL_TODO";
 const CHANGE_TODO_TEXT = "todo/CHANGE_TODO_TEXT";
 const TOGGLE_COMPLETE = "todo/TOGGLE_COMPLETE";
+const SEARCH_CATEGORY_AND_TODO = "todo/SEARCH_CATEGORY_AND_TODO";
 
 export const addCategory = id => ({
   type: ADD_CATEGORY,
@@ -54,8 +55,15 @@ export const toggleComplete = (categoryId, id) => ({
   id
 });
 
+export const searchCategoryAndTodo = searchText => ({
+  type: SEARCH_CATEGORY_AND_TODO,
+  searchText
+});
+
 const initialState = {
+  searchText: "",
   selectedCategoryId: "00001",
+  searchResults: [],
   categories: [
     {
       id: "00001",
@@ -143,7 +151,7 @@ const todoList = (state = initialState, action) => {
           }
           return category;
         })
-      }
+      };
     case SELECT_CATEGORY: {
       // console.log('Reducer-SELECT_CATEGORY: ', state);
       // console.log('Reducer-SELECT_CATEGORY: ', action);
@@ -217,6 +225,31 @@ const todoList = (state = initialState, action) => {
       return {
         ...state,
         categories: newList
+      };
+    }
+    case SEARCH_CATEGORY_AND_TODO: {
+      const newCategories = [];
+      state.categories.forEach(category => {
+        if (category.name.includes(action.searchText)) {
+          newCategories.push(category);
+        } else {
+          const newTodos = category.todos.filter(todo =>
+            todo.name.includes(action.searchText)
+          );
+          console.log('SEARCH_CATEGORY_AND_TODO newTodos: ', newTodos);
+          if (newTodos.length >= 1) {
+            newCategories.push({
+              id: category.id,
+              name: category.name,
+              todos: newTodos
+            });
+          }
+        }
+      });
+      return {
+        ...state,
+        searchText: action.searchText,
+        searchResults: newCategories
       };
     }
     default:

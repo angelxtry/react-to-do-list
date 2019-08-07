@@ -11,11 +11,15 @@ const SidebarContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  categories: state.todoList.categories
+  searchText: state.todoList.searchText,
+  categories: state.todoList.categories,
+  searchResults: state.todoList.searchResults
 });
 
 const mapDispatchToProps = dispatch => ({
   handleAddCategory: () => dispatch(actions.addCategory(uuid())),
+  handleSearch: searchText =>
+    dispatch(actions.searchCategoryAndTodo(searchText))
 });
 
 export default connect(

@@ -77,6 +77,11 @@ body {
   color: #FF9500;
 }
 
+.main .search-category-name {
+  color: #9A9A9B;
+  font-size: 14px;
+}
+
 .main .btn-add-todo {
   position: absolute;
   margin-top: 10px;
