@@ -2,9 +2,8 @@ import React from "react";
 
 import SearchResultEntityContainer from "../containers/SearchResultEntityContainer";
 
-const SearchResults = props => {
-  // console.log("SearchResults: ", props);
-  const { searchText, searchResults } = props.searchResultsContainer;
+const SearchResults = ({ searchResultsContainer }) => {
+  const { searchText, searchResults } = searchResultsContainer;
   return (
     <div>
       <span className="selected-category-name">

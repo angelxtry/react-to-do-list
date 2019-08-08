@@ -2,9 +2,9 @@ import React from "react";
 
 import TodoContainer from "../containers/TodoContainer";
 
-const TodoList = props => {
+const TodoList = ({ mainContainer }) => {
   // console.log("TodoList: ", props);
-  const { selectedCategoryId, categories, handleAddTodo } = props.mainContainer;
+  const { selectedCategoryId, categories, handleAddTodo } = mainContainer;
   const [selectedCategory] = categories.filter(
     category => category.id === selectedCategoryId
   );
@@ -18,9 +18,7 @@ const TodoList = props => {
 
   return (
     <div>
-      <span className="selected-category-name">
-        {selectedCategory.name}
-      </span>
+      <span className="selected-category-name">{selectedCategory.name}</span>
       <button
         className="btn-add-todo"
         onClick={() => addTodo(selectedCategoryId)}

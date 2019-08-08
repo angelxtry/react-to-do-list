@@ -3,11 +3,10 @@ import React from "react";
 import TodoListContainer from "../containers/TodoListContainer";
 import SearchResultsContainer from "../containers/SearchResultsContainer";
 
-const Main = props => {
-  // console.log("Main: ", props);
+const Main = ({ mainContainer }) => {
   if (
-    props.mainContainer.searchText === "" ||
-    props.mainContainer.searchText === undefined
+    mainContainer.searchText === "" ||
+    mainContainer.searchText === undefined
   ) {
     // console.log('Main TodoListContainer')
     return <TodoListContainer />;
