@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import * as actions from "../store/module/todoList";
 import Todo from "../components/Todo";
+import uuid from "../utils/uuid";
 
 const TodoContainer = props => {
   // console.log("TodoContainer: ", props);
@@ -14,6 +15,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  handleAddTodo: categoryId => dispatch(actions.addTodo(categoryId, uuid())),
   handleToggleCheckbox: (categoryId, id) =>
     dispatch(actions.toggleComplete(categoryId, id)),
   handleChangeTodoText: (categoryId, id, text) =>

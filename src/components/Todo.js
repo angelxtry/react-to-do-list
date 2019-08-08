@@ -38,16 +38,21 @@ class Todo extends Component {
   manageTodo = todoText => {
     const {
       todoList: { categoryId, id },
+      handleAddTodo,
       handleChangeTodoText,
       handleDelTodo
     } = this.props.todoContainer;
-    if (todoText === "") handleDelTodo(categoryId, id);
-    else handleChangeTodoText(categoryId, id, todoText);
+    if (todoText === "") {
+      handleDelTodo(categoryId, id);
+    } else {
+      handleChangeTodoText(categoryId, id, todoText);
+      handleAddTodo(categoryId);
+    }
   };
 
   render() {
     const {
-      todoList: { categoryId, id, complete },
+      todoList: { categoryId, id, isNew, complete },
       handleToggleCheckbox,
       handleDelTodo
     } = this.props.todoContainer;
@@ -73,6 +78,7 @@ class Todo extends Component {
               onChange={this.onChangeTodoText}
               onKeyDown={this.onKeyDown}
               onBlur={e => this.manageTodo(e.target.value)}
+              autoFocus={isNew}
             />
           </span>
           <button

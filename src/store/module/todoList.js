@@ -73,18 +73,21 @@ const initialState = {
         {
           categoryId: "00001",
           id: "10001",
+          isNew: false,
           name: "category1-todo1",
           complete: false
         },
         {
           categoryId: "00001",
           id: "10002",
+          isNew: false,
           name: "category1-todo2",
           complete: false
         },
         {
           categoryId: "00001",
           id: "10003",
+          isNew: false,
           name: "category1-todo3",
           complete: false
         }
@@ -98,12 +101,14 @@ const initialState = {
         {
           categoryId: "00002",
           id: "20001",
+          isNew: false,
           name: "category2-todo1",
           complete: false
         },
         {
           categoryId: "00002",
           id: "20002",
+          isNew: false,
           name: "category2-todo2",
           complete: false
         }
@@ -117,6 +122,7 @@ const initialState = {
         {
           categoryId: "00003",
           id: "30001",
+          isNew: false,
           name: "category3-todo1",
           complete: false
         }
@@ -172,6 +178,7 @@ const todoList = (state = initialState, action) => {
         category.todos = category.todos.concat({
           categoryId: action.categoryId,
           id: action.id,
+          isNew: true,
           name: ""
         });
         return category;
@@ -199,6 +206,7 @@ const todoList = (state = initialState, action) => {
           category.todos = category.todos.map(todo => {
             if (todo.id === action.id) {
               todo.name = action.text;
+              todo.isNew = false;
             }
             return todo;
           });

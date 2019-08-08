@@ -10,8 +10,10 @@
 검색 기능 추가
 카테고리 추가 시 auto focus, auto select
 
-할일
+2019-08-08
 todo 추가 시 auto focus
+
+할일
 엔터를 입력하면 자동으로 추가
 local storage
 
