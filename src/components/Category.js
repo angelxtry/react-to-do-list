@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-const DEFAULT_CATEGORY_ID = "00001";
-
 class Category extends Component {
   constructor(props) {
     super(props);
@@ -90,5 +88,7 @@ class Category extends Component {
     );
   }
 }
+
+const DEFAULT_CATEGORY_ID = "00001";
 
 export default Category;
