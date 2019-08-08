@@ -13,6 +13,4 @@ const mapStateToProps = state => ({
   searchResults: state.todoList.searchResults
 });
 
-export default connect(
-  mapStateToProps,
-)(SearchResultsContainer);
+export default connect(mapStateToProps)(SearchResultsContainer);

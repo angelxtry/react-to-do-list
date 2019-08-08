@@ -7,9 +7,15 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import rootReducer from "./store/module";
+import { loadState, saveState } from "./utils/localStorage";
 
-const store = createStore(rootReducer);
+const persistedState = loadState();
+const store = createStore(rootReducer, persistedState);
 console.log(store.getState());
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>

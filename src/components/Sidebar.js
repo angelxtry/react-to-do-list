@@ -34,8 +34,8 @@ class Sidebar extends Component {
   };
 
   render() {
-    // console.log("Sidebar render: ", this.props.categoryList);
     const { categories, handleAddCategory } = this.props.categoryList;
+    // console.log("Sidebar render categories: ", categories);
     return (
       <div>
         <div>

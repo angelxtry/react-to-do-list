@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAddTodo: categoryId => dispatch(actions.addTodo(categoryId, uuid())),
+  handleAddTodo: categoryId => dispatch(actions.addTodo(categoryId, uuid()))
 });
 
 export default connect(

@@ -9,9 +9,7 @@ const MainContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  searchText: state.todoList.searchText,
+  searchText: state.todoList.searchText
 });
 
-export default connect(
-  mapStateToProps,
-)(MainContainer);
+export default connect(mapStateToProps)(MainContainer);

@@ -165,7 +165,7 @@ const todoList = (state = initialState, action) => {
       };
     case SELECT_CATEGORY: {
       return {
-        searchText: '',
+        searchText: "",
         selectedCategoryId: action.id,
         categories: [...state.categories]
       };
