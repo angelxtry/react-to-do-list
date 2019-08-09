@@ -10,10 +10,9 @@ const TodoList = ({ mainContainer }) => {
   );
 
   const addTodo = categoryId => {
-    if (isLastTodoNameBlank(selectedCategory.todos)) {
-      return null;
-    }
-    return handleAddTodo(categoryId);
+    return isLastTodoNameBlank(selectedCategory.todos)
+      ? null
+      : handleAddTodo(categoryId);
   };
 
   return (
