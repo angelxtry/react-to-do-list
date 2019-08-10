@@ -11,16 +11,29 @@ body {
   top: 0;
   left: 0;
   background-color: #2C2D30;
-  overflow-x: hidden;
   padding-top: 20px;
+  padding-bottom: 60px;
+  overflow: scroll;
 }
 
-.sidenav .input-search {
-  padding: 20px;
+.input-search {
+  /* padding: 20px; */
+  position: sticky;
+  width: 230px;
   margin-bottom: 10px;
+  background-color: #2C2D30;
+  border: 0;
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  /* display: inline; */
+
 }
 
-.sidenav .btn-add-category {
+.btn-add-category {
+  position: fixed;
+  width: 250px;
+  margin-top: 10px;
   bottom: 0;
 }
 
@@ -38,19 +51,21 @@ body {
   display: block;
 }
 
-.sidenav input {
+.div-category {
+  overflow-y:auto; overflow-x:hidden;
+}
+
+.category {
   background-color: #2C2D30;
-  /* margin-bottom: 10px; */
   border: 0;
   padding: 10px;
   color: #fff;
-  /* width: 200px;
-  height: 40px; */
   font-size: 16px;
   display: inline;
+  /* /* width:100%; */
 }
 
-.sidenav .btn-delete-category {
+.btn-delete-category {
   margin-left: 10px;
   display: inline;
   background-color: #2C2D30;

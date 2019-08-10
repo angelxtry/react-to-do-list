@@ -38,24 +38,27 @@ class Sidebar extends Component {
     // console.log("Sidebar render categories: ", categories);
     return (
       <div>
-        <div>
+        <div className="div-search">
           <input
             className="input-search"
+            placeholder="검색"
             value={this.state.searchText}
             onChange={e => this.onChangeSearchText(e)}
             onKeyDown={this.onKeyDown}
           />
         </div>
-        <ul>
-          {categories.map((category, index) => (
-            <CategoryContainer
-              key={category.id}
-              category={category}
-              isNew={category.isNew}
-              callbackResetSearchText={this.resetSearchText}
-            />
-          ))}
-        </ul>
+        <div className="div-category">
+          <ul>
+            {categories.map(category => (
+              <CategoryContainer
+                key={category.id}
+                category={category}
+                isNew={category.isNew}
+                callbackResetSearchText={this.resetSearchText}
+              />
+            ))}
+          </ul>
+        </div>
         <button className="btn-add-category" onClick={handleAddCategory}>
           목록 추가
         </button>
